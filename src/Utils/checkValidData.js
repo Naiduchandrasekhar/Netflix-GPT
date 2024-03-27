@@ -1,38 +1,48 @@
-export const checkValidData = (email, password, setErrorMessage) => {
+export const checkValidData = (email, password) => {
   const isEmailValid = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/.test(email);
   const isPasswordValid =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/.test(
       password
     );
 
+    const validationObj = {
+      emailErr: {isValid: true},
+      passwordErr: {isValid: true}
+    }
+
    if (email === "") {
-    setErrorMessage((prev) => ({ ...prev, emailErr: "email is required" }));
+    validationObj['emailErr'] = {isValid: false, message: "email is required"}
   } else if (!isEmailValid) {
-    setErrorMessage((prev) => ({ ...prev, emailErr: "email is not valid please check" }));
+    validationObj['emailErr'] = {isValid: false, message: "email is not valid please check"}
   }  else {
-    setErrorMessage((prev) => ({ ...prev, emailErr: "" }));
+    validationObj['emailErr'] = {isValid: true, message: ""}
   }
 
   if (password === "") {
-    setErrorMessage((prev) => ({ ...prev,  passwordErr: "password is required",}));
+      validationObj['passwordErr'] = {isValid: false, message: "password is required"}
   } else if (!isPasswordValid) {
-    setErrorMessage((prev) => ({...prev, passwordErr: "password is not valid" }));
+      validationObj['passwordErr'] = {isValid: false, message: "password is not valid"}
  } else {
-    setErrorMessage((prev) => ({ ...prev, passwordErr: "" }));
+      validationObj['passwordErr'] = {isValid: true, message: ""}
   }
 
-  return setErrorMessage;
+  return {validationObj};
 };
 
-export const checkNameData = (name, setErrorMessage) => {
+export const checkNameData = (name) => {
   const isNameValid = /^[a-zA-Z ]{2,30}$/.test(name);
 
-  if (!isNameValid) {
-    setErrorMessage((prev) => ({ ...prev, nameErr: "name is not valid", }));
-  } else if (name === "") {
-    setErrorMessage((prev) => ({ ...prev, nameErr: "name is Required" }));
-  } else {
-    setErrorMessage((prev) => ({ ...prev, nameErr: "" }));
+  const validationName = {
+    nameErr: {isValid: true},
   }
-  return setErrorMessage
+
+  if (name === "") {
+    validationName['nameErr'] = {isValid: false, message: "name is Required" }
+  } else if (!isNameValid) {
+    validationName['nameErr'] = {isValid: false, message: "name is not valid" }
+  } else {
+    validationName['nameErr'] = {isValid: true, message: "" }
+  }
+
+  return {validationName}
 };
