@@ -67,7 +67,6 @@ const Login = () => {
   };
 
   const handleSignUp = (e) => {
-    console.log("yes clicked");
     setLoading(true);
     e.preventDefault();
 
@@ -80,7 +79,7 @@ const Login = () => {
 
     //signUp Logic with using firebase
 
-    console.log(errorMessage);
+    // console.log(errorMessage);
 
     if (
       validationObj.emailErr.message === "" &&
@@ -103,9 +102,9 @@ const Login = () => {
           })
             .then(() => {
               // Profile updated!
-              const { uid, email, displayName } = auth.currentUser;
+              const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(
-                addUser({ uid: uid, email: email, displayName: displayName })
+                addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL })
               );
               setLoading(false);
             })
@@ -147,6 +146,7 @@ const Login = () => {
       {/*Here background image BG-Image-Netflix used in tailwindConfig.js*/}
       <div className="bg-BG-Image-Netflix bg-cover bg-center h-[100vh] overflow-scroll">
         <Header />
+        <div className="flex justify-center items-center h-[100vh]">
         <form className="bg-black w-[350px] my-7 mx-auto right-0 left-0 text-white p-12  bg-opacity-80">
           <h1 className="font-bold text-3xl mb-4">
             {signIn ? "Sign In" : "Sign Up"}
@@ -207,6 +207,7 @@ const Login = () => {
             </span>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );
