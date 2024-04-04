@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import lang from '../Utils/languageConstants'
 import { useSelector } from 'react-redux'
-import openai from "../Utils/openai"
 
 const GptSearchBar = () => {
     const searchText = useRef(null)
@@ -10,14 +9,6 @@ const GptSearchBar = () => {
     const handleSearchMOvie = async (e) => {
       console.log(searchText.current.value)
       e.preventDefault()
-    
-      //Make an API call to GPT API and get movie results
-      // const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query" + searchText.current.value + "only give me names of 5 movies, comma seperated"
-      // const gptMovieList = await openai.chat.completions.create({
-      //   messages: [{ role: 'user', content: gptQuery }],
-      //   model: 'gpt-3.5-turbo',
-      // });
-      // console.log(gptMovieList.choices)
       alert("oops! GPT API is paid so not implemented")
     }
 
