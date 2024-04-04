@@ -14,6 +14,7 @@ import { toggleGptSearchView } from "../Utils/gptSlice";
 import { changeLanguage } from "../Utils/configSlice";
 
 const Header = () => {
+ 
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
@@ -104,11 +105,11 @@ const Header = () => {
   };
 
   return (
-    <div className="px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center absolute w-[100%] z-50">
+    <div className=" px-8 py-2 bg-gradient-to-b from-black flex justify-between items-center sm:flex-col md:flex-row absolute w-[100%] z-50">
       <img src={NETFLIX_LOGO} alt="netflix_logo" className="w-44" />
       {user && (
         <div>
-          <div className="flex items-center">
+          <div className="sm:justify-between sm:w-[100vw] md:justify-end md:w-[20vw]  flex items-center ">
             <div>
               <select
                 onChange={handleChangeLanguage}
@@ -129,6 +130,7 @@ const Header = () => {
                 {showGptSearch ? "Homepage" : "GPT Search"}
               </button>
             </div>
+            <div className="flex items-center">
             <div onClick={handleImageUpload}>
               <input
                 id="fileInput"
@@ -149,6 +151,7 @@ const Header = () => {
               className="text-3xl text-white cursor-pointer"
             >
               {drop ? <IoIosArrowDropup /> : <IoIosArrowDropdown />}
+            </div>
             </div>
           </div>
           <div>
@@ -189,5 +192,6 @@ const Header = () => {
     </div>
   );
 };
+
 
 export default Header;

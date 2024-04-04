@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import Header from "./Header";
 import { checkNameData, checkValidData } from "../Utils/checkValidData";
 import {
   createUserWithEmailAndPassword,
@@ -145,7 +144,6 @@ const Login = () => {
     <div className="h-[100vh]">
       {/*Here background image BG-Image-Netflix used in tailwindConfig.js*/}
       <div className="bg-BG-Image-Netflix bg-cover bg-center h-[100vh] overflow-scroll">
-        <Header />
         <div className="flex justify-center items-center h-[100vh]">
         <form className="bg-black w-[350px] my-7 mx-auto right-0 left-0 text-white p-12  bg-opacity-80">
           <h1 className="font-bold text-3xl mb-4">
